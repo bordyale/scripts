@@ -1,0 +1,40 @@
+# Edit this file to introduce tasks to be run by cron.
+# 
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+# 
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').
+# 
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+# 
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+# 
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+# 
+# For more information see the manual pages of crontab(5) and cron(8)
+# 
+# m h  dom mon dow   command
+#@reboot bash /home/ale/script/startOfbiz.sh
+MAILTO="alessio.bordignon@gmail.com"
+#* * * * * /usr/bin/curl ipinfo.io/ip 1>> /home/pi/scripts/statusIpPub/pubIp.status 2> /dev/null
+#* * * * * echo 1>> /home/pi/scripts/statusIpPub/pubIp.status 2> /dev/null
+* * * * * bash /home/pi/scripts/statusIpPub/pubIpStatus.sh 2> /dev/null
+#* * * * * echo 1>> /home/pi/scripts/statusIpPub/pubIp.status 2> /dev/null
+* * * * * /usr/bin/curl -T /home/pi/scripts/statusIpPub/pubIp.status ftp://ftp.alma-ag.it/alma-ag.it/ --user 6677477@aruba.it:Fiordaliso1- > /dev/null 2>&1
+59 * * * * rm -rf /home/pi/scripts/statusIpPub/pubIp.status
+#01 * * * * /home/ale/scripts/statusIpPub/pubIpStatusToMail.sh 2> /dev/null
+01 * * * * python3 /home/pi/scripts/startup_mailer-ip.py
+0 6 * * * /home/pi/scripts/auth/user-access-details-2.sh 1> /dev/null
+02 02 * * * /home/pi/scripts/backupMySql.sh root ofbiz 2> /dev/null
+12 03 * * * /home/pi/scripts/backupSave.sh > /dev/null 2>&1
+@reboot bash /home/pi/scripts/startOfbiz.sh
+00 20 * * * bash /home/pi/scripts/restart.sh 2> /dev/null
+@reboot sleep 300 && python /home/pi/scripts/startup_mailer.py
+
