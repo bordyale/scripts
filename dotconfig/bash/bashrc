@@ -118,6 +118,13 @@ export TERM='xterm-direct'
 # export PS1="\[\e[33m\]\[\e[m\]\[\e[33m\]\[\e[m\]\[\e[33m\]\[\e[m\]\[\e[0;33m\]\[\e[m\]\[\e[0;33m\]\w\[\e[m\]\[\e[33m\]\[\e[m\]\[\e[33m\]\n) \[\e[m\] "
 # # If id command returns zero, you got root access.
 # PS1="\\[$(tput setaf 6)\\]\\u@\\h:\\w \n ) \\[$(tput setaf 6)\\]"
+#Vim motions
+set -o vi
+# set show-mode-in-prompt on
+# set vi-cmd-mode-string "\\1\\e[2 q\\2"
+# set vi-ins-mode-string "\\1\\e[6 q\\2"
+# PS0="\\e[2 q"
+#
 #
 #Starship init
 eval "$(starship init bash)"
