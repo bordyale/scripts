@@ -37,4 +37,5 @@ MAILTO="alessio.bordignon@gmail.com"
 @reboot bash /home/pi/scripts/startOfbiz.sh
 00 20 * * * bash /home/pi/scripts/restart.sh 2> /dev/null
 @reboot sleep 300 && python /home/pi/scripts/startup_mailer.py
-
+00 04 * * * python3 /home/pi/python/vvordnot/populPrice.py
+00 06 * * * python3 /home/pi/python/vvordnot/populDiv.py
