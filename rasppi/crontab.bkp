@@ -39,3 +39,4 @@ MAILTO="alessio.bordignon@gmail.com"
 @reboot sleep 300 && python /home/pi/scripts/startup_mailer.py
 00 04 * * * python3 /home/pi/python/vvordnot/populPrice.py
 00 06 * * * python3 /home/pi/python/vvordnot/populDiv.py
+00 07 * * * python3 /home/pi/python/vvordnot/populCurrency.py
