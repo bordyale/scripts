@@ -21,5 +21,5 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 # 
 # m h  dom mon dow   command
-#08 19 * * * /sbin/shutdown -r now
 48 05 * * 3 /sbin/shutdown -r now
+@reboot sleep 60 && bash /home/pi/scripts/iptables
