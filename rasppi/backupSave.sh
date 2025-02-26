@@ -13,23 +13,29 @@ DIR_DEST='/home/ale/Dropbox/backupMySql/pi'
 
 
 #cp $full_file . 1> /dev/null 2> /dev/null
-ftp -niv $HOST<<EOF 1> /dev/null 2> /dev/null
-user $USER $PASSWD
-binary
-passive
-cd alma-ag.it
-lcd $LDIR
-get $FILE
-bye
-EOF
+#ftp -niv $HOST<<EOF 1> /dev/null 2> /dev/null
+#user $USER $PASSWD
+#binary
+#passive
+#cd alma-ag.it
+#lcd $LDIR
+#get $FILE
+#bye
+#EOF
 
 
+
+#input="$LDIR/$FILE"
+#input2="$input"ok
+#echo $input2
+#echo >> $input
+#head -n -1 $input >> $input2
 
 input="$LDIR/$FILE"
-input2="$input"ok
-echo $input2
+rm -rf $input
+wget --user=$USER --password=$PASSWD --directory-prefix=$LDIR ftp://$HOST/alma-ag.it/$FILE
+
 echo >> $input
-head -n -1 $input >> $input2
 
 IP=''
 while IFS= read -r line
@@ -45,7 +51,7 @@ echo "read ip:"
 USER='ale'
 PASSWD='alessio1A'
 #IP='84.0.224.154'
-DBS="$(ls -t $BACKDIR | head -n 4)"
+DBS="$(ls -t $BACKDIR | head -n 3)"
 #echo $DBS
 
 
