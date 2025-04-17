@@ -46,12 +46,13 @@ PASSWD='alessio1A'
 DBS="$(ls -t $BACKDIR | head -n 3)"
 echo $DBS
 
-#IP='192.168.1.250'
+IP='192.168.1.250'
+PORT='22'
 for fil in $DBS
 do
 	full_file="$BACKDIR/$fil"
 	echo $full_file
 	echo "Uploading file to remote server..."
-	sshpass -p "$PASSWD" scp -P 5000 -o StrictHostKeyChecking=no -rC $full_file $USER@$IP:$DIR_DEST
+	sshpass -p "$PASSWD" scp -P $PORT -o StrictHostKeyChecking=no -rC $full_file $USER@$IP:$DIR_DEST
 	echo "File upload to remote server completed!"
 done

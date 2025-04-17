@@ -1,0 +1,60 @@
+# Edit this file to introduce tasks to be run by cron.
+# 
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+# 
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').
+# 
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+# 
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+# 
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+# 
+# For more information see the manual pages of crontab(5) and cron(8)
+# 
+# m h  dom mon dow   command
+MAILTO="alessio.bordignon@gmail.com"
+02 02 * * * /home/vulkan/scripts/backupMySql.sh root ofbiz 2> /dev/null
+12 03 * * * /home/vulkan/scripts/backupSave.sh > /dev/null 2>&1
+@reboot bash /home/vulkan/scripts/startOfbiz.sh
+#00 20 * * * bash /home/vulkan/scripts/restart.sh 2> /dev/null
+#* * * * * echo "Hello from crontab" >> /tmp/mycommand.log
+10 06 * * * python3 /home/vulkan/python/vvordnot/main.py
+# Edit this file to introduce tasks to be run by cron.
+# 
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+# 
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').
+# 
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+# 
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+# 
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+# 
+# For more information see the manual pages of crontab(5) and cron(8)
+# 
+# m h  dom mon dow   command
+MAILTO="alessio.bordignon@gmail.com"
+02 02 * * * /home/vulkan/scripts/backupMySql.sh root ofbiz 2> /dev/null
+12 03 * * * /home/vulkan/scripts/backupSave.sh > /dev/null 2>&1
+@reboot bash /home/vulkan/scripts/startOfbiz.sh
+#00 20 * * * bash /home/vulkan/scripts/restart.sh 2> /dev/null
+#* * * * * echo "Hello from crontab" >> /tmp/mycommand.log
+10 06 * * * python3 /home/vulkan/python/vvordnot/main.py
