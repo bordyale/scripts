@@ -16,7 +16,7 @@ smtpserver.ehlo()
 smtpserver.starttls()
 smtpserver.ehlo
 smtpserver.login(gmail_user, gmail_password)
-files = os.listdir('/home/ale/Dropbox/backupMySql/pi')
+files = os.listdir('/home/ale/Dropbox/backupMySql/pi_rclone')
 
 
 today = datetime.date.today()
