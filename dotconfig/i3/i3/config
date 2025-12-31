@@ -10,7 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 #Window border set
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
 
 #win key
 #set $mod Mod4
@@ -27,6 +27,7 @@ exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
 #font pango:monospace 8
 # font pango:Ubuntu Regular 10
 font pango:MesloLGS Nerd Font Mono Bold 10
+# font pango:JetBrainsMono Nerd Font Mono Bold 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -230,6 +231,7 @@ bindsym $mod+x exec i3lock
 # bindsym $mod+b exec /home/$USER/.local/bin/chrome 
 bindsym $mod+b exec brave-browser 
 bindsym $mod+t exec thunderbird
+bindsym $mod+z exec flatpak run app.zen_browser.zen
 
 # Press $mod+o followed by either f, t, Escape or Return to launch firefox,
 # thunderbird or return to the default mode, respectively.
@@ -288,3 +290,22 @@ client.unfocused         $overlay0 $base  $text    $rosewater $overlay0
 client.urgent            $peach    $base  $peach   $overlay0  $peach
 client.placeholder       $overlay0 $base  $text    $overlay0  $overlay0
 client.background        $base
+
+
+
+
+
+# GAPS
+gaps inner 7px
+gaps outer 2px
+
+#workspace 5 gaps inner 0
+#workspace 5 gaps outer 0
+
+# CHANGE GAPS REAL TIME
+bindsym $mod+i gaps inner current plus 5
+bindsym $mod+Shift+i gaps inner current minus 5
+bindsym $mod+u gaps outer current plus 5
+bindsym $mod+Shift+u gaps outer current minus 5
+bindsym $mod+p gaps inner current set 7; gaps outer current set 2
+bindsym $mod+Shift+p gaps inner current set 0; gaps outer current set 0
