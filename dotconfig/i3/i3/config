@@ -229,9 +229,10 @@ for_window [class="FileZilla"] move to workspace $ws3
 # Shortcut for Lockscreen
 bindsym $mod+x exec i3lock
 # bindsym $mod+b exec /home/$USER/.local/bin/chrome 
-bindsym $mod+b exec brave-browser 
+#bindsym $mod+b exec brave-browser 
 bindsym $mod+t exec thunderbird
 bindsym $mod+z exec flatpak run app.zen_browser.zen
+bindsym $mod+b exec flatpak run com.vivaldi.Vivaldi 
 
 # Press $mod+o followed by either f, t, Escape or Return to launch firefox,
 # thunderbird or return to the default mode, respectively.
