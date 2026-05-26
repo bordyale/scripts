@@ -37,7 +37,14 @@ MAILTO="alessio.bordignon@gmail.com"
 @reboot bash /home/pi/scripts/startOfbiz.sh
 00 20 * * * bash /home/pi/scripts/restart.sh 2> /dev/null
 @reboot sleep 300 && python /home/pi/scripts/startup_mailer.py
-00 04 * * * python3 /home/pi/python/vvordnot/populPrice.py
-00 06 * * * python3 /home/pi/python/vvordnot/populDiv.py
+04 04 * * * python3 -u /home/pi/python/vvordnot/populPrice.py >/home/pi/populPrice.log 2>&1
+03 05 * * * python3 /home/pi/python/vvordnot/populDiv.py
 00 07 * * * python3 /home/pi/python/vvordnot/populCurrency.py
-0 */1 * * * rclone sync /home/pi/backupmysql/mysql/ dropbox_rasp_backp_db:backupMySql/pi_rclone/ 
+0 */1 * * * rclone sync /home/pi/backupmysql/mysql/ dropbox_rasp_backp_db:backupMySql/pi_rclone/
+#@reboot sleep 600 && /home/pi/python/portfolio_python/run_portfolio.sh --server-only --no-browser --port 8080
+#02 06 * * * /home/pi/python/portfolio_python/run_portfolio.sh --db --user root --password ofbiz --fetch-only
+# Avvia il server al boot
+@reboot /bin/bash /home/pi/python/portfolio_python/run_portfolio.sh --server-only --no-browser --port 8080 >> /tmp/portfolio_server.log 2>&1
+
+# Aggiorna i dati ogni mattina alle 7:00
+0 7 * * * /bin/bash /home/pi/python/portfolio_python/run_portfolio.sh --fetch-only --db --user root --password ofbiz >> /tmp/portfolio_fetch.log 2>&1

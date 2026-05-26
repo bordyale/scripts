@@ -31,9 +31,9 @@ url = 'http://checkip.dyndns.org'
 request = urlopen(url).read().decode('utf-8')
 ourIP = re.findall("\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}", request)
 ourIP = str(ourIP)
+IP = ourIP.replace('[','').replace("'","").replace(']','')
 
-
-my_ip = 'External address: %s' %  (ourIP)
+my_ip = 'External address: http://%s:5002/report.html' %  (IP)
 msg = MIMEText(my_ip)
 msg['Subject'] = 'IP For RaspberryPi on %s' % today.strftime('%b %d %Y')
 msg['From'] = gmail_user
